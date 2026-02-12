@@ -16,7 +16,7 @@ class ContaBancaria:
         else:
             self.saldo += valor_deposito
             print(f"Depósito realizado com sucesso. Seu novo saldo é de [green]R${self.saldo:.2f}[/]")
-            self.extrato.append(f"Depósito: [green]R${valor_deposito:.2f}[/]. Saldo após o DEPÓSITO: [green]R${self.saldo:.2f}[/]")
+            self.extrato.append(f"Depósito: [green]R${valor_deposito:.2f}[/].")
 
     def sacar(self, valor_saque):
         self.valor_saque = valor_saque
@@ -25,15 +25,15 @@ class ContaBancaria:
             print("Seu limite de saques diários foi excedido. Tente novamente outro dia")
 
         elif valor_saque > 500:
-            print("Seu limite diário para saque é de [green]R$ 500.00[/]")
+            print("Seu limite diário para saque é de [red]R$ 500.00[/]")
 
         elif self.saldo < valor_saque:
-            print(f"Saldo insuficiente! Saldo atual de [green]R${self.saldo:.2f}[/]")
+            print(f"Saldo insuficiente! Saldo atual de [red]R${self.saldo:.2f}[/]")
             
         else:
             self.saldo -= valor_saque
             print(f"Saque no valor de [green]R${valor_saque:.2f}[/] realizado com sucesso.\nSeu novo saldo é de [green]R${self.saldo:.2f}[/]")
-            self.extrato.append(f"Saque: [green]R${valor_saque:.2f}[/]. Saldo após o SAQUE: [green]R${self.saldo:.2f}[/]")
+            self.extrato.append(f"Saque: [red]R${valor_saque:.2f}[/].")
             self.limite_saque += 1
 
     def extrato_bancario(self):
@@ -44,6 +44,7 @@ class ContaBancaria:
                 print("==" * 26)
                 print(sorp)
                 print("==" * 26)
+            print(f"SALDO ATUAL: [green]R${self.saldo:.2f}[/]")
         
 
 cliente = ContaBancaria("Aramyz", 1, 0, 0)
